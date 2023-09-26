@@ -34,6 +34,10 @@ Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
+Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagem}', function(string $nome, string $categoria, string $assunto, string $mensagem){
+    echo "Estamos aqui: $nome - $categoria - $assunto - $mensagem";
+});
+
 // Agrupamento de rotas
 Route::prefix('/app')->group(function(){ 
 
