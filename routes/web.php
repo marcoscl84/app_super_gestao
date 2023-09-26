@@ -38,6 +38,8 @@ Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagem}', function(string $
     echo "Estamos aqui: $nome - $categoria - $assunto - $mensagem";
 });
 
+//
+
 // Agrupamento de rotas
 Route::prefix('/app')->group(function(){ 
 
