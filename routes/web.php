@@ -38,6 +38,31 @@ Route::prefix('/app')->group(function(){
 });
 
 
+/* Parâmetros nas rotas */
+// colocando ? ao lado do parâmetro na rota, indica ser opcional. De ser definido valor padrão como na $mensagem 
+// Route::get(
+//     '/contato/{nome}/{categoria}/{assunto}/{mensagem?}', 
+//     function (
+//         string $nome, 
+//         string $categoria, 
+//         string $assunto, 
+//         string $mensagem = 'msg não informada'
+//         ) {
+//             echo "Olá: ".$nome." - ".$categoria." - ".$assunto." - ".$mensagem;
+// });
+
+//Tratando parâmetros com expressões regulares
+Route::get(
+    '/contato/{nome}/{categoria_id}/', 
+    function (
+        string $nome = 'Desconhecido', 
+        int $categoria_id = 1                       //informação
+        ) {
+            echo "Olá: $nome - $categoria_id";
+        }
+)->where('categoria_id', '[0-9]+')->where('nome', '[a-zA-Z]+'); //trata o erro caso não receba o tipo estabelecido
+
+
 
 /* REDIRECIONAMENTO DE ROTAS */
 
@@ -57,40 +82,11 @@ Route::redirect('/rota2', '/rota1');
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
 
-////////////////////////////////////////////////////////////
 // ROTA DE FALLBACK (CONTINGÊNCIA) - direciona para página tratada quando a rota não existir
-
 Route::fallback( function(){
     echo 'A rota acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir para página inicial';
 });
 
 
 
-
-////////////////////////////////////////////////////////////
-
-/* 
-// colocando ? ao lado do parâmetro na rota, indica ser opcional. De ser definido valor padrão como na $mensagem 
-Route::get(
-    '/contato/{nome}/{categoria}/{assunto}/{mensagem?}', 
-    function (
-        string $nome, 
-        string $categoria, 
-        string $assunto, 
-        string $mensagem = 'msg não informada'
-        ) {
-            echo "Olá: ".$nome." - ".$categoria." - ".$assunto." - ".$mensagem;
-});
-
-//Tratando parâmetros com expressões regulares
-Route::get(
-    '/contato/{nome}/{categoria_id}/', 
-    function (
-        string $nome = 'Desconhecido', 
-        int $categoria_id = 1                       //informação
-        ) {
-            echo "Olá: $nome - $categoria_id";
-        }
-)->where('categoria_id', '[0-9]+')->where('nome', '[a-zA-Z]+'); //trata o erro caso não receba o tipo estabelecido
- */
 
