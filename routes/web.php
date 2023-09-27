@@ -27,14 +27,13 @@ Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
-Route::get('/clientes', function(){ return 'Clientes'; })->name('site.clientes');
 
-Route::get('/fornecedores', function(){ return 'Fornecedores'; })->name('site.fornecedores');
-
-Route::get('/produtos', function(){ return 'Produtos'; })->name('site.produtos');
-
-
-
+// Agrupamento de rotas
+Route::prefix('/app')->group(function(){ 
+    Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
+    Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
+    Route::get('/produtos', function(){ return 'produtos'; })->name('app.produtos');
+});
 
 
 
