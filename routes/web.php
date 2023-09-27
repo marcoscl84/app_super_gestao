@@ -27,25 +27,14 @@ Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
-Route::get(
-    '/contato/{nome}/{categoria_id}', 
-    function(
-        string $nome = 'unknown', 
-        int $categoria_id = 1 // 1 = 'Informação'
-    ){
-        echo "Estamos aqui: $nome - $categoria_id";
-    }
-)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+'); // tratamento do que será aceito nos parâmetros da rota (+ respresenta que ao menos um caractere é requerido)
+Route::get('/clientes', function(){ return 'Clientes'; })->name('site.clientes');
+
+Route::get('/fornecedores', function(){ return 'Fornecedores'; })->name('site.fornecedores');
+
+Route::get('/produtos', function(){ return 'Produtos'; })->name('site.produtos');
 
 
-// Agrupamento de rotas
-Route::prefix('/app')->group(function(){ 
 
-    Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
-    Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
-    Route::get('/produtos', function(){ return 'produtos'; })->name('app.produtos');
-
-});
 
 
 
@@ -94,13 +83,7 @@ Route::get(
         ) {
             echo "Olá: ".$nome." - ".$categoria." - ".$assunto." - ".$mensagem;
 });
- */
 
-
-
- 
-
-/* 
 //Tratando parâmetros com expressões regulares
 Route::get(
     '/contato/{nome}/{categoria_id}/', 
@@ -110,6 +93,6 @@ Route::get(
         ) {
             echo "Olá: $nome - $categoria_id";
         }
-)->where('categoria_id', '[0-9]+')->where('nome', '[a-zA-Z]+');                 //trata o erro caso não receba o tipo estabelecido
+)->where('categoria_id', '[0-9]+')->where('nome', '[a-zA-Z]+'); //trata o erro caso não receba o tipo estabelecido
  */
 
