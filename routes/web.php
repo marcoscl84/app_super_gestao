@@ -80,13 +80,12 @@ Route::get('/rota2', function(){
 Route::redirect('/rota2', '/rota1');
  */
 
-Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
-
 // ROTA DE FALLBACK (CONTINGÊNCIA) - direciona para página tratada quando a rota não existir
 Route::fallback( function(){
     echo 'A rota acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir para página inicial';
 });
 
 
-
+// Passagem de parametros para o controller
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
 
