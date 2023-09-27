@@ -39,19 +39,16 @@ Route::prefix('/app')->group(function(){
 
 
 
-
-
-////////////////////////////////////////////////////////////
 /* REDIRECIONAMENTO DE ROTAS */
 
-/* Route::get('/rota1', function(){ 
+Route::get('/rota1', function(){ 
     echo 'Rota 1';
-})->name('site.rota1'); */
+})->name('site.rota1'); 
 
 // Redireciona da rota2 pra rota1 no contexto da função de callback ou controlador...
-/* Route::get('/rota2', function(){ 
+Route::get('/rota2', function(){ 
     return redirect()->route('site.rota1');
-})->name('site.rota2'); */
+})->name('site.rota2'); 
 
 /* 
 // ...ou, redireciona da rota2 pra rota1 pela função redirect
