@@ -26,6 +26,8 @@ Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 //nome, categoria, assunto, mensagem
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
+/* "name" é um alias para a rota ser chamada nas páginas, 
+evitando uma alteração em todos os lugares, caso a rota preciser ser alterara */
 
 
 // Agrupamento de rotas
