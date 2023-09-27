@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-/*
-///// Rota antes de criar controllers
-Route::get('/', function () {
-    return 'ae, beleza?';
-}); */
-
-////////////////////////////////////////////////////////////
 /* ROTAS DA APLICAÇÃO */
 
 Route::get('/', 'PrincipalController@principal')->name('site.index');
@@ -34,11 +27,16 @@ Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
-Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagem}', function(string $nome, string $categoria, string $assunto, string $mensagem){
-    echo "Estamos aqui: $nome - $categoria - $assunto - $mensagem";
-});
+Route::get(
+    '/contato/{nome}/{categoria_id}', 
+    function(
+        string $nome = 'unknown', 
+        int $categoria_id = 1 // 1 = 'Informação'
+    ){
+        echo "Estamos aqui: $nome - $categoria_id";
+    }
+)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+'); // tratamento do que será aceito nos parâmetros da rota (+ respresenta que ao menos um caractere é requerido)
 
-//
 
 // Agrupamento de rotas
 Route::prefix('/app')->group(function(){ 
