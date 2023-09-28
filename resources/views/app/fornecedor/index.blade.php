@@ -5,11 +5,7 @@
 @php
 
 /*
-    if(){
-
-    } else if(){
-
-    } else {
+    if( !<condicao> ){
 
     }
 */
@@ -18,10 +14,19 @@
 
 {{-- @dd($fornecedores); --}}
 
-@if(count($fornecedores) > 0 && count($fornecedores) < 10)
-    <h3>Existem alguns fornecedores cadastrados</h3>
-@elseif(count($fornecedores) >= 10)
-    <h3>Existem vários fornecedores cadastrados</h3>
-@else
-    <h3>Ainda não existem fornecedores cadastrados</h3>
+{{-- Unless executa se o retorno for false, como na negação do if acima --}}
+
+Fornecedor: {{ $fornecedores[0]['nome'] }}
+<br/>
+Status: {{ $fornecedores[0]['status'] }}
+<br/>
+
+@if( !($fornecedores[0]['status']) )
+    Fornecedor inativo
 @endif
+
+<br/>
+
+@unless( $fornecedores[0]['status'] == 'S') <!-- se o retorno da condição for false -->
+    Fornecedor inativo
+@endunless
