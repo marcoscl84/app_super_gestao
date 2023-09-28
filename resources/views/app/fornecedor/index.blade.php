@@ -5,7 +5,7 @@
 @php
 
 /*
-    if( !<condicao> ){
+    if(isset($variavel)){
 
     }
 */
@@ -14,19 +14,12 @@
 
 {{-- @dd($fornecedores); --}}
 
-{{-- Unless executa se o retorno for false, como na negação do if acima --}}
-
-Fornecedor: {{ $fornecedores[0]['nome'] }}
-<br/>
-Status: {{ $fornecedores[0]['status'] }}
-<br/>
-
-@if( !($fornecedores[0]['status']) )
-    Fornecedor inativo
-@endif
-
-<br/>
-
-@unless( $fornecedores[0]['status'] == 'S') <!-- se o retorno da condição for false -->
-    Fornecedor inativo
-@endunless
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[1]['nome'] }}
+    <br/>
+    Status: {{ $fornecedores[1]['status'] }}
+    <br/>
+    @isset($fornecedores[1]['cnpj'])
+        CNPJ: {{ $fornecedores[1]['cnpj']  }}
+    @endisset
+@endisset
