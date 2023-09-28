@@ -3,18 +3,25 @@
 {{-- Comentário que é descartado pelo interpretador do blade --}}
 
 @php
-    // Código puro php entre as arrobas
-    echo "Teste php puro";
+
+/*
+    if(){
+
+    } else if(){
+
+    } else {
+
+    }
+*/
 
 @endphp
-<br />
 
-{{ 'Texto teste entre chaves' }} 
-<br />
-<?php echo 'Texto teste entre tags php' ?>
-<br />
-<?= 'Texto de teste sintaxe curta do php' ?>
+{{-- @dd($fornecedores); --}}
 
-<br  /><br />
-
-            
+@if(count($fornecedores) > 0 && count($fornecedores) < 10)
+    <h3>Existem alguns fornecedores cadastrados</h3>
+@elseif(count($fornecedores) >= 10)
+    <h3>Existem vários fornecedores cadastrados</h3>
+@else
+    <h3>Ainda não existem fornecedores cadastrados</h3>
+@endif
