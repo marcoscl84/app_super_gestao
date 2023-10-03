@@ -1,4 +1,4 @@
-{{ $slot }}
+{{ $x }}
 
 <form action={{ route('site.contato') }} method="post">
 
