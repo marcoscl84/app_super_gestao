@@ -1,5 +1,7 @@
 @extends('site.layouts.basico') {{-- conecta template com a view --}}
 
+@section('titulo', 'Home') 
+
 @section('conteudo')
 
     <div class="topo">
