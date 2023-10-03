@@ -1,3 +1,5 @@
+{{ $slot }}
+
 <form action={{ route('site.contato') }} method="post">
 
     @csrf
