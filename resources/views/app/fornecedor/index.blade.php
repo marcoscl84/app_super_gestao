@@ -4,38 +4,39 @@
 
 @php
 
-/*
-    if(empty($variavel)){ // retornar se variavel estiver vazia
-        - ''
-        - 0
-        - 0.0
-        - '0'
-        - null
-        - false
-        - array()
-        - $var
 
-    }
-*/
 
 @endphp
 
 {{-- @dd($fornecedores); --}}
 
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[0]['nome'] }}
+    Fornecedor: {{ $fornecedores[1]['nome'] }}
     <br/>
-    Status: {{ $fornecedores[0]['status'] }}
+    Status: {{ $fornecedores[1]['status'] }}
     <br/>
-    CNPJ: {{ $fornecedores[0]['CNPJ'] ?? 'Dado não foi preenchido' }}
+    CNPJ: {{ $fornecedores[1]['CNPJ'] ?? 'Dado não foi preenchido' }}
+    <br/>
+    Telefone: ({{ $fornecedores[1]['ddd'] ?? '' }}) {{ $fornecedores[1]['telefone'] ?? '' }}
+    <br/>
 
-    {{-- 
-    
-        se $variavel testada não estiver definida (se não existir)
-            ou
-        se $variavel testada possuir valor null
+    @switch($fornecedores[1]['ddd'])
+        @case('51')
+            Porto Algre
+            @break
 
-        mostra a mensagem padrão
-    --}}
-     
+        @case('21')
+            Rio de Janeiro
+            @break
+
+        @case('41')
+            Curitiba
+            @break
+
+        @default
+            Local não identificado
+
+    @endswitch
+
+
 @endisset
