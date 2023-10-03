@@ -14,13 +14,28 @@
     
     @forelse ($fornecedores as $indice => $fornecedor)
 
-        Fornecedor: @{{ $fornecedor['nome'] }}
+        Iteração atual: {{ $loop->iteration }} {{-- disponível somente no foreach e forelse --}}
+        {{-- @dd($loop) --}}
+
         <br/>
-        Status: @{{ $fornecedor['status'] }}
+        Fornecedor: {{ $fornecedor['nome'] }}
         <br/>
-        CNPJ: @{{ $fornecedor['cnpj'] ?? '' }}
+        Status: {{ $fornecedor['status'] }}
         <br/>
-        Telefone: (@{{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+        <br/>
+        Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        <br/>
+
+        @if($loop->first)
+            Primeira iteração
+        @endif
+
+        @if($loop->last)
+            Última iteração
+            <br/>
+            Total de registros: {{ $loop->count }}
+        @endif
         <hr/>
     
     @empty
