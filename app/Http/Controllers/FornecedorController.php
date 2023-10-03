@@ -19,7 +19,7 @@ class FornecedorController extends Controller
             ]
         ];
 
-        echo isset($fornecedores[1]['cnpj']) ? 'CNPJ informado' : 'CNPJ não informado';
+        
 
         return view('app.fornecedor.index', compact('fornecedores'));
     }

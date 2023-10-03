@@ -27,10 +27,15 @@
     <br/>
     Status: {{ $fornecedores[0]['status'] }}
     <br/>
-    @isset($fornecedores[0]['cnpj'])
-        CNPJ: {{ $fornecedores[0]['cnpj']  }}
-        @empty($fornecedores[0]['cnpj'])
-            - Vazio
-        @endempty
-    @endisset
+    CNPJ: {{ $fornecedores[0]['CNPJ'] ?? 'Dado não foi preenchido' }}
+
+    {{-- 
+    
+        se $variavel testada não estiver definida (se não existir)
+            ou
+        se $variavel testada possuir valor null
+
+        mostra a mensagem padrão
+    --}}
+    
 @endisset
