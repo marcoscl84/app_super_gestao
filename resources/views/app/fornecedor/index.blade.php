@@ -8,19 +8,19 @@
 
 @endphp
 
-{{-- @dd($fornecedores); --}}
+{{-- @ antes das chaves, imprime tudo que vem em seguida da @ como string, sem interpretar a variável --}}
 
 @isset($fornecedores)
     
     @forelse ($fornecedores as $indice => $fornecedor)
 
-        Fornecedor: {{ $fornecedor['nome'] }}
+        Fornecedor: @{{ $fornecedor['nome'] }}
         <br/>
-        Status: {{ $fornecedor['status'] }}
+        Status: @{{ $fornecedor['status'] }}
         <br/>
-        CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
+        CNPJ: @{{ $fornecedor['cnpj'] ?? '' }}
         <br/>
-        Telefone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+        Telefone: (@{{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
         <hr/>
     
     @empty
